@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oliver Kaka | Web Developer & UI/UX Designer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Raleway:wght@800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6C63FF;
+            --secondary: #4A44C6;
+            --accent: #FF6584;
+            --dark: #2A2D3E;
+            --light: #F7F9FC;
+            --background: linear-gradient(135deg, #1a1c28 0%, #2a2d3e 100%);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-color: #F7F9FC;
+            --text-secondary: rgba(247, 249, 252, 0.8);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--background);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header & Navigation */
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(42, 45, 62, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Raleway', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            width: 60%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .highlight {
+            color: var(--accent);
+            position: relative;
+        }
+
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 15px;
+            background: rgba(255, 101, 132, 0.3);
+            z-index: -1;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(108, 99, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary);
+            margin-left: 15px;
+            color: var(--text-color);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        .btn-cv {
+            background: var(--accent);
+            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.4);
+            margin-left: 15px;
+        }
+
+        .btn-cv:hover {
+            box-shadow: 0 8px 25px rgba(255, 101, 132, 0.6);
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            top: 35%;
+            transform: translateY(-50%);
+            width: 30%;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 300px;
+            max-height: 300px;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            object-fit: cover;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            filter: blur(80px);
+            opacity: 0.3;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* Particle simulation with CSS */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: 0.2;
+            animation: floatParticle linear infinite;
+        }
+
+        @keyframes floatParticle {
+            0% {
+                transform: translateY(0) translateX(0);
+            }
+            100% {
+                transform: translateY(-100vh) translateX(20px);
+            }
+        }
+
+        /* CV Section */
+        .cv-section {
+            background: rgba(26, 28, 40, 0.5);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .cv-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cv-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            margin-top: 30px;
+        }
+
+        .cv-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        /* Educational Background */
+        .education-section {
+            margin-top: 40px;
+            border-top: 1px solid var(--card-border);
+            padding-top: 30px;
+            text-align: left;
+        }
+
+        .education-item {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 25px;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .education-item:hover {
+            background: rgba(108, 99, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .edu-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(108, 99, 255, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.2rem;
+            color: var(--primary);
+        }
+
+        .edu-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--text-color);
+        }
+
+        .edu-institution {
+            font-weight: 600;
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .edu-period {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+
+        .edu-description {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Certifications Section */
+        .certifications-section {
+            padding: 100px 0;
+            background: rgba(26, 28, 40, 0.3);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .certification-item {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .certification-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .certification-badge {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5rem;
+            color: white;
+        }
+
+        .certification-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .certification-item p {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 15px;
+        }
+
+        .certification-link {
+            display: inline-block;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .certification-link:hover {
+            color: var(--accent);
+            text-decoration: underline;
+        }
+
+        /* Skills Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            text-align: center;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .skill-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .skill-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            height: 300px;
+            transition: var(--transition);
+        }
+        
+        .portfolio-link {
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(42, 45, 62, 0.9) 0%, transparent 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .portfolio-tag {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid var(--card-border);
+            border-radius: 8px;
+            color: var(--text-color);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(26, 28, 40, 0.8);
+            padding: 50px 0 30px;
+            border-top: 1px solid rgba(108, 99, 255, 0.2);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-color);
+            font-size: 1.2rem;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero-content {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .hero-image {
+                position: relative;
+                width: 50%;
+                margin: 40px auto 0;
+                transform: none;
+                top: 0;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero .btn, 
+            .hero .btn-secondary,
+            .hero .btn-cv {
+                display: block;
+                width: 80%;
+                margin: 15px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CSS Particles Background -->
+    <div class="particles">
+        <div class="particle" style="width: 5px; height: 5px; top: 10%; left: 15%; animation-duration: 20s;"></div>
+        <div class="particle" style="width: 8px; height: 8px; top: 25%; left: 70%; animation-duration: 25s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; top: 50%; left: 40%; animation-duration: 22s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; top: 70%; left: 85%; animation-duration: 18s;"></div>
+        <div class="particle" style="width: 7px; height: 7px; top: 40%; left: 10%; animation-duration: 30s;"></div>
+        <div class="particle" style="width: 5px; height: 5px; top: 85%; left: 60%; animation-duration: 15s;"></div>
+        <div class="particle" style="width: 6px; height: 6px; top: 30%; left: 30%; animation-duration: 28s;"></div>
+        <div class="particle" style="width: 4px; height: 4px; top: 65%; left: 20%; animation-duration: 17s;"></div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Oliver Kaka</div>
+                <div class="nav-links">
+                    <a href="#home">About</a>
+                    <a href="#cv">CV</a>
+                    <a href="#certifications">Certifications</a>
+                    <a href="#skills">Skills</a>
+                    <a href="#portfolio">Portfolio</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span class="highlight">Oliver Kaka</span><br>Web Developer & UI/UX Designer</h1>
+                <p>I create beautiful, functional, and user-centered digital experiences. With a passion for both aesthetics and code, I bring ideas to life in the browser.</p>
+                <a href="#portfolio" class="btn">View My Work</a>
+                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
+                <a href="#cv" class="btn btn-cv">Download CV</a>
+            </div>
+            <div class="hero-image floating">
+                <img src="oliverphoto.jpg" alt="Oliver Kaka - Web Developer">
+            </div>
+        </div>
+    </section>
+
+    <!-- CV Download Section with Education -->
+    <section id="cv" class="cv-section">
+        <div class="container">
+            <h2 class="section-title">My Curriculum Vitae</h2>
+            <div class="cv-container">
+                <p>Download my comprehensive CV to learn more about my professional experience, education, and skills.</p>
+                <div class="cv-card">
+                    <div class="cv-icon">
+                        <i class="fas fa-file-download"></i>
+                    </div>
+                    <h3>Oliver Kaka - Web Developer & UI/UX Designer</h3>
+                    <p style="margin: 20px 0;">PDF Document | Updated: July 2025</p>
+                    <a href="oliverCV.pdf" class="btn btn-cv">
+                        <i class="fas fa-download"></i> Download CV
+                    </a>
+                    
+                    <!-- Educational Background Section -->
+                    <div class="education-section">
+                        <h3 style="margin-bottom: 20px; color: var(--accent);">Educational Background</h3>
+                        
+                        <div class="education-item">
+                            <div class="edu-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div class="edu-details">
+                                <h4>Bachelor of Science in Information Technology</h4>
+                                <p class="edu-institution">Jomo Kenyatta University of Agriculture and Technology</p>
+                                <p class="edu-period">2024 - Present</p>
+                                <p class="edu-description">Specialized in Web Development and Cloud Infrastructure</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="certifications-section">
+        <div class="container">
+            <h2 class="section-title">Professional Certifications</h2>
+            <div class="certifications-grid">
+                <div class="certification-item">
+                    <div class="certification-badge">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud Computing Fundamentals</h3>
+                    <p>IBM</p>
+                    <a href="https://www.credly.com/badges/63c83451-a45c-4ae9-a5e9-174503d401da/public_url" class="certification-link" target="_blank">
+                        View Credential <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="certification-badge">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h3>Enterprise Design Thinking</h3>
+                    <p>IBM</p>
+                    <a href="https://www.credly.com/badges/dd6f512d-f650-4e44-a7ec-474eb6deaf76/public_url" class="certification-link" target="_blank">
+                        View Credential <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="certification-badge">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Introduction to Data Science</h3>
+                    <p>Cisco Networking Academy</p>
+                    <a href="https://www.credly.com/badges/1c4c9055-9c9e-466d-988e-1c10a8ffb10f/public_url" class="certification-link" target="_blank">
+                        View Credential <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+                
+                <div class="certification-item">
+                    <div class="certification-badge">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Introduction to Cybersecurity</h3>
+                    <p>Cisco Networking Academy</p>
+                    <a href="https://www.credly.com/badges/b24ba5d8-1fd3-4e7a-b111-2f37af176c2e/public_url" class="certification-link" target="_blank">
+                        View Credential <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <h2 class="section-title">My Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Frontend Development</h3>
+                    <p>HTML, CSS, JavaScript, React, Vue.js, responsive design, and performance optimization.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-paint-brush"></i>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>User research, wireframing, prototyping, interaction design, and usability testing.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud & DevOps</h3>
+                    <p>AWS, Azure, GCP, serverless architecture, Docker, Kubernetes, and cloud infrastructure management.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Networking</h3>
+                    <p>Network design, security, protocols, and infrastructure implementation.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Programming Languages</h3>
+                    <p>Python, C, C++, JavaScript, and modern web development frameworks.</p>
+                </div>
+                
+                <div class="skill-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Responsive Design</h3>
+                    <p>Creating experiences that work seamlessly across all devices and screen sizes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section with Clickable Items -->
+    <section id="portfolio" class="section" style="background: rgba(26, 28, 40, 0.5);">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="portfolio-grid">
+
+                <div class="portfolio-item">
+                    <a href="https://www.sportmanagementsystems.com/" class="portfolio-link" target="_blank">
+                        <img src="https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Sports Management System">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">Full Stack</span>
+                            <h3>Sports Management System</h3>
+                            <p>Comprehensive solution for managing teams, schedules, and player statistics</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="portfolio-item">
+                    <a href="https://www.aliexpress.com/" class="portfolio-link" target="_blank">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="E-commerce Project">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">UI/UX Design</span>
+                            <h3>Modern E-commerce Platform</h3>
+                            <p>A complete shopping experience with intuitive navigation and seamless checkout</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="portfolio-item">
+                    <a href="https://analytics.zeraki.co.ke" class="portfolio-link" target="_blank">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dashboard Project">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">Web App</span>
+                            <h3>Analytics Dashboard</h3>
+                            <p>Data visualization tool with customizable widgets and real-time updates</p>
+                        </div>
+                    </a>
+                </div>
+                
+                <div class="portfolio-item">
+                    <a href="https://www.stippl.io/" class="portfolio-link" target="_blank">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel App">
+                        <div class="portfolio-overlay">
+                            <span class="portfolio-tag">Mobile Design</span>
+                            <h3>Travel Planning App</h3>
+                            <p>Interactive itinerary builder with location-based recommendations</p>
+                        </div>
+                    </a>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <div>
+                    <h3 style="font-size: 1.8rem; margin-bottom: 25px;">Let's create something amazing together</h3>
+                    <p style="margin-bottom: 30px; font-size: 1.1rem;">Whether you have a project in mind or just want to chat about design and development, feel free to reach out. I'm currently available for freelance work and full-time positions.</p>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <h4 style="font-size: 1.2rem; margin-bottom: 15px; color: var(--accent);">Contact Information</h4>
+                        <p><i class="fas fa-envelope" style="margin-right: 10px;"></i> oliverkaka715@gmail.com</p>
+                        <p><i class="fas fa-phone" style="margin-right: 10px;"></i> +254 702 833 485</p>
+                        <p><i class="fas fa-map-marker-alt" style="margin-right: 10px;"></i> Nairobi, Kenya</p>
+                    </div>
+                    
+                    <div class="social-links">
+                        <a href="mailto:oliverkaka715@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/oliver-kaka-maganga" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/Oliver-Kaka" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="mailto:oliverkaka715@gmail.com" class="social-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/oliver-kaka-maganga" target="_blank" class="social-icon">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/Oliver-Kaka" target="_blank" class="social-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+            <p class="copyright">© 2025 Oliver Kaka Maganga. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
