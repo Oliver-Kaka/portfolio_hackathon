@@ -3,6 +3,8 @@
 ## Overview
 This repository contains the personal portfolio website of Oliver Kaka, a Web Developer & UI/UX Designer. The portfolio showcases Oliver's professional experience, certifications, skills, projects, and contact information through a modern, responsive single-page website built exclusively with **vanilla HTML and CSS** (no frameworks or preprocessors).
 
+You can click the following link to view the website live [Github pages](https://oliver-kaka.github.io/portfolio_hackathon/).
+
 ## Key Features
 - **Pure HTML/CSS Implementation**: Built entirely with vanilla HTML and CSS - no frameworks, libraries, or preprocessors
 - **Responsive Design**: Fully responsive layout that works on all devices from mobile to desktop
@@ -30,13 +32,13 @@ This repository contains the personal portfolio website of Oliver Kaka, a Web De
    git clone https://github.com/Oliver-Kaka/portfolio_hackathon.git
    ```
 2. Navigate to the project directory
-3. Open `portfolio.html` in any modern web browser
+3. Open `index.html` in any modern web browser
 4. No build process or additional dependencies required
 
 ## File Structure
 ```
 portfolio/
-├── portfolio.html                 # Main HTML file (contains all CSS in <style> tag)
+├── index.html                 # Main HTML file (contains all CSS in <style> tag)
 ├── oliverphoto.jpg            # Profile photo 
 ├── oliverCV.pdf               # CV document 
 ├── README.md                  # This documentation file
@@ -67,6 +69,7 @@ To personalize this portfolio:
 
 ## Browser Compatibility
 The portfolio is compatible with:
+- Brave browser (latest) **Recomended**
 - Google Chrome (latest)
 - Mozilla Firefox (latest)
 - Microsoft Edge (latest)
